@@ -17,11 +17,11 @@ Inspired by Astral Bot aesthetics with deep obsidian glass cards, animated glowi
 - `mkkrnn`
 
 ### Special Credits & Inspirations
-- **Nat** — *Silicate*
-- **chagh** — *Echo*
-- **gwddos** — *Bot Pioneer*
-- **decks** — *Astral Bot*
-- **scarlet** — *Scarlet Utils*
+- **Nat** — *Dev of Silicate*
+- **chagh** — *Dev of tcbot*
+- **gwddos** — *Dev of Astral*
+- **decks** — *Dev of Echo*
+- **scarlet** — *Scarlet Utils • Dev of Silicate & Astral*
 
 ---
 
