@@ -3,107 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ivy — Next-Gen Geometry Dash 2.2 Framework</title>
-    <meta name="description" content="Next-Generation Geometry Dash 2.2 Replay Engine & Cloud Macros Framework.">
+    <title>Ivy</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Canvas -->
-    <canvas id="ambient-canvas"></canvas>
-    <div class="ambient-glow glow-1"></div>
-    <div class="ambient-glow glow-2"></div>
+    <!-- Starfield Background Canvas -->
+    <canvas id="starfield"></canvas>
 
-    <!-- Navigation -->
+    <!-- Header Navigation -->
     <header class="navbar">
         <div class="nav-container">
             <a href="#" class="brand">
                 <div class="logo-box">
-                    <i data-lucide="sparkles" class="logo-icon"></i>
+                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 22 22 22"></polygon>
+                    </svg>
                 </div>
-                <span class="brand-text">Ivy</span>
-                <span class="badge">v1.0.3</span>
+                <div class="brand-names">
+                    <span class="brand-title">Ivy</span>
+                    <span class="brand-sub">Engine</span>
+                </div>
             </a>
             <nav class="nav-links">
-                <a href="#countdown">Countdown</a>
-                <a href="#team">Team</a>
-                <a href="#credits">Credits</a>
+                <a href="#home" class="nav-item active">Home</a>
+                <a href="#countdown" class="nav-item">Countdown</a>
+                <a href="#about" class="nav-item">About Us</a>
+                <a href="#team" class="nav-item">Team</a>
+                <a href="#credits" class="nav-item">Credits</a>
             </nav>
-            <div class="nav-actions">
-                <a href="https://github.com/Myszon1212/ivy-macro-backend" target="_blank" class="btn btn-secondary">
-                    <i data-lucide="github"></i>
-                    <span>GitHub</span>
-                </a>
-            </div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="hero-section" id="hero">
+        <section class="hero-section" id="home">
             <div class="container hero-container">
-                <div class="status-pill">
-                    <span class="pulse-dot"></span>
-                    <span>Next Release Dropping Soon</span>
-                </div>
-
-                <h1 class="hero-title">
-                    The Ultimate <span class="gradient-text">Geometry Dash</span><br>
-                    Macro & Automation Suite
-                </h1>
-
-                <p class="hero-subtitle">
-                    Ultra-precise input engine with built-in 5 TB Cloud Macros, Moving Wave & UFO Gap Spam, and real-time directional physics prediction.
+                <h1 class="hero-title">Ivy</h1>
+                <p class="hero-desc">
+                    Ivy is the next-generation replay engine and utility suite for Geometry Dash 2.2.<br>
+                    Crafted for ultra-high precision, cloud macros, dynamic gap spam, and fluid physics prediction.<br>
+                    Pushing the absolute boundaries of GD 2.2 modding.
                 </p>
 
-                <!-- Countdown Section -->
-                <div class="countdown-wrapper" id="countdown">
-                    <div class="countdown-header">
-                        <i data-lucide="timer" class="countdown-icon"></i>
-                        <span>COUNTDOWN TO 16:00 (SWEDISH TIME / CET)</span>
+                <!-- Live Countdown -->
+                <div class="countdown-container" id="countdown">
+                    <div class="countdown-header-bar">
+                        <span class="status-indicator"></span>
+                        <span class="countdown-heading">COUNTDOWN TO 16:00 (SWEDISH TIME / CET)</span>
                     </div>
-                    <div class="countdown-grid">
-                        <div class="countdown-card">
-                            <span class="countdown-value" id="cd-days">00</span>
-                            <span class="countdown-label">DAYS</span>
+                    <div class="countdown-display">
+                        <div class="countdown-unit">
+                            <span class="countdown-num" id="cd-days">00</span>
+                            <span class="countdown-tag">DAYS</span>
                         </div>
-                        <div class="countdown-sep">:</div>
-                        <div class="countdown-card">
-                            <span class="countdown-value" id="cd-hours">00</span>
-                            <span class="countdown-label">HOURS</span>
+                        <span class="cd-colon">:</span>
+                        <div class="countdown-unit">
+                            <span class="countdown-num" id="cd-hours">00</span>
+                            <span class="countdown-tag">HOURS</span>
                         </div>
-                        <div class="countdown-sep">:</div>
-                        <div class="countdown-card">
-                            <span class="countdown-value" id="cd-minutes">00</span>
-                            <span class="countdown-label">MINUTES</span>
+                        <span class="cd-colon">:</span>
+                        <div class="countdown-unit">
+                            <span class="countdown-num" id="cd-minutes">00</span>
+                            <span class="countdown-tag">MINUTES</span>
                         </div>
-                        <div class="countdown-sep">:</div>
-                        <div class="countdown-card">
-                            <span class="countdown-value" id="cd-seconds">00</span>
-                            <span class="countdown-label">SECONDS</span>
+                        <span class="cd-colon">:</span>
+                        <div class="countdown-unit">
+                            <span class="countdown-num" id="cd-seconds">00</span>
+                            <span class="countdown-tag">SECONDS</span>
                         </div>
                     </div>
-                    <div class="countdown-footer">
+                    <div class="countdown-footer-bar">
                         <span id="countdown-status">Target: 16:00:00 Europe/Stockholm (Sweden)</span>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- CTA Buttons -->
-                <div class="hero-cta">
-                    <a href="#team" class="btn btn-primary btn-large">
-                        <i data-lucide="users"></i>
-                        <span>Meet The Team</span>
-                    </a>
-                    <a href="https://github.com/Myszon1212/ivy-macro-backend" target="_blank" class="btn btn-glass btn-large">
-                        <i data-lucide="download"></i>
-                        <span>Get Ivy .geode</span>
-                    </a>
+        <!-- About Us Section -->
+        <section class="section about-section" id="about">
+            <div class="container">
+                <h2 class="section-title">About Us</h2>
+
+                <div class="about-card">
+                    <h3 class="about-card-title">Built by modders, made for the community</h3>
+                    <p class="about-card-desc">
+                        Ivy was created by zmyzca and myszon to bring a seamless, reliable, and powerful utility and macro engine to Geometry Dash 2.2. Featuring moving gap spam physics, automated cloud synchronization, directional blur rendering, and an uncompromised native user interface.
+                    </p>
                 </div>
             </div>
         </section>
@@ -111,79 +102,90 @@
         <!-- Team Section -->
         <section class="section team-section" id="team">
             <div class="container">
-                <div class="section-badge">
-                    <i data-lucide="code-2"></i>
-                    <span>STAFF & CONTRIBUTORS</span>
-                </div>
-                <h2 class="section-title">The Developers</h2>
-                <p class="section-subtitle">The minds architecting Ivy's engine, hooks, cloud system, and security suite.</p>
-
-                <div class="devs-grid">
-                    <!-- Head Dev -->
-                    <div class="card dev-card head-dev-card">
-                        <div class="card-glow"></div>
-                        <div class="avatar-ring head-ring">
-                            <i data-lucide="crown" class="avatar-icon"></i>
+                <!-- Developers -->
+                <h3 class="group-title">Developers</h3>
+                <div class="team-grid devs-grid">
+                    <div class="team-card">
+                        <div class="avatar-box">
+                            <i data-lucide="crown"></i>
                         </div>
-                        <div class="dev-role-badge head-badge">Head Developer</div>
-                        <h3 class="dev-name">zmyzca</h3>
-                        <p class="dev-desc">Lead architect & creator of Ivy. Heading overall core design, project direction, and system integrations.</p>
+                        <div class="team-info">
+                            <span class="member-name">zmyzca</span>
+                            <span class="member-role head-role">Head Developer</span>
+                        </div>
                     </div>
 
-                    <!-- Developer: myszon -->
-                    <div class="card dev-card">
-                        <div class="card-glow"></div>
-                        <div class="avatar-ring">
-                            <i data-lucide="cpu" class="avatar-icon"></i>
+                    <div class="team-card">
+                        <div class="avatar-box">
+                            <i data-lucide="code"></i>
                         </div>
-                        <div class="dev-role-badge">Core Developer</div>
-                        <h3 class="dev-name">myszon</h3>
-                        <p class="dev-desc">Core developer behind Ivy's backend architecture, cloud macros system, and client-server synchronizations.</p>
+                        <div class="team-info">
+                            <span class="member-name">myszon</span>
+                            <span class="member-role">Developer</span>
+                        </div>
                     </div>
 
-                    <!-- Developer: mimi -->
-                    <div class="card dev-card">
-                        <div class="card-glow"></div>
-                        <div class="avatar-ring">
-                            <i data-lucide="sparkles" class="avatar-icon"></i>
+                    <div class="team-card">
+                        <div class="avatar-box">
+                            <i data-lucide="sparkles"></i>
                         </div>
-                        <div class="dev-role-badge">Developer</div>
-                        <h3 class="dev-name">mimi</h3>
-                        <p class="dev-desc">AI pair engineer & security specialist. Binary hardening, string encryption, and motion physics rendering.</p>
+                        <div class="team-info">
+                            <span class="member-name">mimi</span>
+                            <span class="member-role">Developer</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Beta Testers -->
-                <div class="testers-box">
-                    <div class="testers-header">
-                        <i data-lucide="shield-check"></i>
-                        <span>Official Beta Testers</span>
+                <!-- Betatesters -->
+                <h3 class="group-title testers-title">Beta Testers</h3>
+                <div class="team-grid testers-grid">
+                    <div class="team-card tester-card">
+                        <div class="avatar-box tester-avatar">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <div class="team-info">
+                            <span class="member-name">warcat</span>
+                            <span class="member-role tester-role">Beta Tester</span>
+                        </div>
                     </div>
-                    <div class="testers-grid">
-                        <div class="tester-chip">
-                            <span class="tester-dot"></span>
-                            <span class="tester-name">warcat</span>
-                            <span class="tester-tag">Tester</span>
+
+                    <div class="team-card tester-card">
+                        <div class="avatar-box tester-avatar">
+                            <i data-lucide="shield-check"></i>
                         </div>
-                        <div class="tester-chip">
-                            <span class="tester-dot"></span>
-                            <span class="tester-name">zillion</span>
-                            <span class="tester-tag">Tester</span>
+                        <div class="team-info">
+                            <span class="member-name">zillion</span>
+                            <span class="member-role tester-role">Beta Tester</span>
                         </div>
-                        <div class="tester-chip">
-                            <span class="tester-dot"></span>
-                            <span class="tester-name">mkkrnn</span>
-                            <span class="tester-tag">Tester</span>
+                    </div>
+
+                    <div class="team-card tester-card">
+                        <div class="avatar-box tester-avatar">
+                            <i data-lucide="shield-check"></i>
                         </div>
-                        <div class="tester-chip">
-                            <span class="tester-dot"></span>
-                            <span class="tester-name">you</span>
-                            <span class="tester-tag">VIP Tester</span>
+                        <div class="team-info">
+                            <span class="member-name">mkkrnn</span>
+                            <span class="member-role tester-role">Beta Tester</span>
                         </div>
-                        <div class="tester-chip">
-                            <span class="tester-dot"></span>
-                            <span class="tester-name">mimi</span>
-                            <span class="tester-tag">Auto QA</span>
+                    </div>
+
+                    <div class="team-card tester-card">
+                        <div class="avatar-box tester-avatar">
+                            <i data-lucide="user-check"></i>
+                        </div>
+                        <div class="team-info">
+                            <span class="member-name">you</span>
+                            <span class="member-role tester-role">Beta Tester</span>
+                        </div>
+                    </div>
+
+                    <div class="team-card tester-card">
+                        <div class="avatar-box tester-avatar">
+                            <i data-lucide="sparkle"></i>
+                        </div>
+                        <div class="team-info">
+                            <span class="member-name">mimi</span>
+                            <span class="member-role tester-role">Beta Tester</span>
                         </div>
                     </div>
                 </div>
@@ -193,61 +195,73 @@
         <!-- Credits Section -->
         <section class="section credits-section" id="credits">
             <div class="container">
-                <div class="credits-card">
-                    <div class="credits-icon-box">
-                        <i data-lucide="award" class="credits-icon"></i>
-                    </div>
-                    <h2 class="credits-title">Inspirations & Special Credits</h2>
-                    <p class="credits-subtitle">
-                        Huge respect and credits to the pioneers and creators of groundbreaking Geometry Dash tools:
-                    </p>
-                    
-                    <div class="credits-tags">
-                        <div class="credit-pill">
+                <h2 class="section-title">Credits & Inspirations</h2>
+                <p class="credits-intro">
+                    Special thanks and deep respect to the creators of pioneering tools like Silicate, Echo, and Astral:
+                </p>
+
+                <div class="credits-grid">
+                    <div class="credit-card">
+                        <div class="credit-avatar">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <div class="credit-info">
                             <span class="credit-name">Nat</span>
-                            <span class="credit-for">Silicate</span>
-                        </div>
-                        <div class="credit-pill">
-                            <span class="credit-name">chagh</span>
-                            <span class="credit-for">Echo</span>
-                        </div>
-                        <div class="credit-pill">
-                            <span class="credit-name">gwddos</span>
-                            <span class="credit-for">Bot Pioneer</span>
-                        </div>
-                        <div class="credit-pill">
-                            <span class="credit-name">decks</span>
-                            <span class="credit-for">Astral Bot</span>
-                        </div>
-                        <div class="credit-pill">
-                            <span class="credit-name">scarlet</span>
-                            <span class="credit-for">Scarlet Utils</span>
+                            <span class="credit-note">Creator of Silicate</span>
                         </div>
                     </div>
 
-                    <p class="credits-note">
-                        Thank you for inspiring the GD modding ecosystem and raising the standard for bot and physics instrumentation.
-                    </p>
+                    <div class="credit-card">
+                        <div class="credit-avatar">
+                            <i data-lucide="terminal"></i>
+                        </div>
+                        <div class="credit-info">
+                            <span class="credit-name">chagh</span>
+                            <span class="credit-note">Creator of Echo</span>
+                        </div>
+                    </div>
+
+                    <div class="credit-card">
+                        <div class="credit-avatar">
+                            <i data-lucide="cpu"></i>
+                        </div>
+                        <div class="credit-info">
+                            <span class="credit-name">gwddos</span>
+                            <span class="credit-note">Astral & Bot Pioneer</span>
+                        </div>
+                    </div>
+
+                    <div class="credit-card">
+                        <div class="credit-avatar">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <div class="credit-info">
+                            <span class="credit-name">decks</span>
+                            <span class="credit-note">Astral Developer</span>
+                        </div>
+                    </div>
+
+                    <div class="credit-card">
+                        <div class="credit-avatar">
+                            <i data-lucide="flame"></i>
+                        </div>
+                        <div class="credit-info">
+                            <span class="credit-name">scarlet</span>
+                            <span class="credit-note">Creator of Scarlet Utils</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Minimalist Footer -->
     <footer class="footer">
         <div class="container footer-container">
-            <div class="footer-left">
-                <div class="brand">
-                    <div class="logo-box">
-                        <i data-lucide="sparkles" class="logo-icon"></i>
-                    </div>
-                    <span class="brand-text">Ivy</span>
-                </div>
-                <p class="footer-copy">© 2026 Ivy Team. Built with passion for Geometry Dash 2.2.</p>
-            </div>
-            <div class="footer-right">
-                <a href="#hero">Back to top</a>
-                <a href="https://github.com/Myszon1212/ivy-macro-backend" target="_blank">GitHub</a>
+            <span class="footer-copy">© 2026 Ivy. All rights reserved.</span>
+            <div class="footer-links">
+                <a href="#home">Back to top</a>
+                <a href="https://github.com/Myszon1212/ivy-website" target="_blank">GitHub</a>
             </div>
         </div>
     </footer>

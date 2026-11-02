@@ -119,10 +119,10 @@ function initCountdown() {
 }
 
 /**
- * Ambient Glowing Particle Canvas
+ * Astral-style Starfield Background Canvas
  */
 function initParticleCanvas() {
-    const canvas = document.getElementById('ambient-canvas');
+    const canvas = document.getElementById('starfield') || document.getElementById('ambient-canvas');
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
@@ -134,80 +134,41 @@ function initParticleCanvas() {
         height = canvas.height = window.innerHeight;
     });
 
-    const particles = [];
-    const count = Math.min(65, Math.floor((width * height) / 18000));
+    const stars = [];
+    const count = Math.min(120, Math.floor((width * height) / 12000));
 
     for (let i = 0; i < count; i++) {
-        particles.push({
+        stars.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.45,
-            vy: (Math.random() - 0.5) * 0.45,
-            radius: Math.random() * 1.8 + 0.8,
-            color: Math.random() > 0.4 ? 'rgba(0, 245, 155, ' : 'rgba(0, 210, 255, ',
-            alpha: Math.random() * 0.5 + 0.2
+            radius: Math.random() * 1.4 + 0.4,
+            baseAlpha: Math.random() * 0.7 + 0.2,
+            twinkleSpeed: (Math.random() * 0.02 + 0.005),
+            twinklePhase: Math.random() * Math.PI * 2,
+            vy: -(Math.random() * 0.15 + 0.05)
         });
     }
-
-    let mouseX = width / 2;
-    let mouseY = height / 2;
-
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
 
     function render() {
         ctx.clearRect(0, 0, width, height);
 
-        for (let i = 0; i < particles.length; i++) {
-            const p = particles[i];
+        for (let i = 0; i < stars.length; i++) {
+            const s = stars[i];
 
-            p.x += p.vx;
-            p.y += p.vy;
+            s.y += s.vy;
+            if (s.y < 0) {
+                s.y = height;
+                s.x = Math.random() * width;
+            }
 
-            if (p.x < 0) p.x = width;
-            if (p.x > width) p.x = 0;
-            if (p.y < 0) p.y = height;
-            if (p.y > height) p.y = 0;
+            s.twinklePhase += s.twinkleSpeed;
+            const alpha = s.baseAlpha + Math.sin(s.twinklePhase) * 0.25;
+            const clampedAlpha = Math.max(0.1, Math.min(1, alpha));
 
-            // Draw particle
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = p.color + p.alpha + ')';
+            ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${clampedAlpha})`;
             ctx.fill();
-
-            // Connect nearby particles
-            for (let j = i + 1; j < particles.length; j++) {
-                const p2 = particles[j];
-                const dx = p.x - p2.x;
-                const dy = p.y - p2.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
-                if (dist < 110) {
-                    ctx.beginPath();
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    const linkAlpha = (1 - dist / 110) * 0.15;
-                    ctx.strokeStyle = `rgba(0, 245, 155, ${linkAlpha})`;
-                    ctx.lineWidth = 0.8;
-                    ctx.stroke();
-                }
-            }
-
-            // Connection to mouse cursor
-            const mdx = p.x - mouseX;
-            const mdy = p.y - mouseY;
-            const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
-            if (mDist < 140) {
-                ctx.beginPath();
-                ctx.moveTo(p.x, p.y);
-                ctx.lineTo(mouseX, mouseY);
-                const mouseAlpha = (1 - mDist / 140) * 0.22;
-                ctx.strokeStyle = `rgba(0, 210, 255, ${mouseAlpha})`;
-                ctx.lineWidth = 1;
-                ctx.stroke();
-            }
         }
 
         requestAnimationFrame(render);
