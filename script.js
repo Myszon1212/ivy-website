@@ -1,6 +1,6 @@
 /**
  * Ivy — Interactive Script & Countdown Engine
- * Target: 18:00:00 US Timezone (America/New_York - EST/EDT)
+ * Target: 16:00:00 Swedish Timezone (Europe/Stockholm - CET/CEST)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,14 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Computes next occurrence of 18:00:00 in America/New_York time zone.
+ * Computes next occurrence of 16:00:00 in Europe/Stockholm (Sweden) time zone.
  */
 function getTargetTime() {
     const now = new Date();
     
-    // Format current time parts in New York timezone
+    // Format current time parts in Sweden (Stockholm) timezone
     const dtf = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'America/New_York',
+        timeZone: 'Europe/Stockholm',
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',
@@ -32,48 +32,48 @@ function getTargetTime() {
         dateMap[p.type] = p.value;
     }
 
-    const nyYear = parseInt(dateMap.year, 10);
-    const nyMonth = parseInt(dateMap.month, 10);
-    const nyDay = parseInt(dateMap.day, 10);
-    const nyHour = parseInt(dateMap.hour, 10);
-    const nyMinute = parseInt(dateMap.minute, 10);
-    const nySecond = parseInt(dateMap.second, 10);
+    const sweYear = parseInt(dateMap.year, 10);
+    const sweMonth = parseInt(dateMap.month, 10);
+    const sweDay = parseInt(dateMap.day, 10);
+    const sweHour = parseInt(dateMap.hour, 10);
+    const sweMinute = parseInt(dateMap.minute, 10);
+    const sweSecond = parseInt(dateMap.second, 10);
 
-    // Check if 18:00 has already passed today in New York
-    let targetDay = nyDay;
-    let targetMonth = nyMonth;
-    let targetYear = nyYear;
+    // Target is 16:00 (4:00 PM) Swedish time
+    let targetDay = sweDay;
+    let targetMonth = sweMonth;
+    let targetYear = sweYear;
 
-    if (nyHour > 18 || (nyHour === 18 && (nyMinute > 0 || nySecond > 0))) {
-        // Advance to next day
-        const tomorrow = new Date(Date.UTC(nyYear, nyMonth - 1, nyDay + 1));
+    if (sweHour > 16 || (sweHour === 16 && (sweMinute > 0 || sweSecond > 0))) {
+        // 16:00 has already passed today in Sweden; target tomorrow 16:00
+        const tomorrow = new Date(Date.UTC(sweYear, sweMonth - 1, sweDay + 1));
         targetYear = tomorrow.getUTCFullYear();
         targetMonth = tomorrow.getUTCMonth() + 1;
         targetDay = tomorrow.getUTCDate();
     }
 
-    // Format ISO string representing 18:00:00 in NY
+    // Format ISO string representing 16:00:00 in Sweden
     const pad = (n) => String(n).padStart(2, '0');
-    const targetISO = `${targetYear}-${pad(targetMonth)}-${pad(targetDay)}T18:00:00`;
+    const targetISO = `${targetYear}-${pad(targetMonth)}-${pad(targetDay)}T16:00:00`;
 
-    // Calculate timezone offset for New York at target date
-    const nyTargetDate = new Date(`${targetISO}Z`);
-    const nyOffsetString = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'America/New_York',
+    // Calculate timezone offset for Stockholm at target date
+    const sweTargetDate = new Date(`${targetISO}Z`);
+    const sweOffsetString = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Europe/Stockholm',
         timeZoneName: 'shortOffset'
-    }).format(nyTargetDate);
+    }).format(sweTargetDate);
 
-    // Extract GMT/UTC offset (e.g., GMT-4 or GMT-5)
-    let offsetMinutes = -300; // default -5 hrs (EST)
-    const match = nyOffsetString.match(/GMT([+-]\d+)(?::(\d+))?/);
+    // Extract GMT/UTC offset (e.g., GMT+1 for CET or GMT+2 for CEST)
+    let offsetMinutes = 60; // default +1 hr (CET)
+    const match = sweOffsetString.match(/GMT([+-]\d+)(?::(\d+))?/);
     if (match) {
         const hours = parseInt(match[1], 10);
         const mins = match[2] ? parseInt(match[2], 10) : 0;
         offsetMinutes = hours * 60 + (hours < 0 ? -mins : mins);
     }
 
-    // Convert NY 18:00 to absolute UTC timestamp
-    const targetUtcTimestamp = Date.UTC(targetYear, targetMonth - 1, targetDay, 18, 0, 0) - (offsetMinutes * 60 * 1000);
+    // Convert Stockholm 16:00 to absolute UTC timestamp
+    const targetUtcTimestamp = Date.UTC(targetYear, targetMonth - 1, targetDay, 16, 0, 0) - (offsetMinutes * 60 * 1000);
     return targetUtcTimestamp;
 }
 
@@ -110,7 +110,7 @@ function initCountdown() {
         if (secondsEl) secondsEl.textContent = pad(seconds);
 
         if (statusEl) {
-            statusEl.textContent = `Target: 18:00:00 US Eastern (New York) • Syncing Live`;
+            statusEl.textContent = `Target: 16:00:00 Swedish Time (Europe/Stockholm) • Syncing Live`;
         }
     }
 

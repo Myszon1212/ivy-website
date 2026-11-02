@@ -29,7 +29,7 @@ Inspired by Astral Bot aesthetics with deep obsidian glass cards, animated glowi
 ---
 
 ## 🚀 Live Countdown
-Features a live UTC/New York timezone countdown engine targeting **18:00 US Timezone (America/New_York)**.
+Features a live UTC/Stockholm timezone countdown engine targeting **16:00 Swedish Time (Europe/Stockholm - CET/CEST)**.
 
 ---
 
