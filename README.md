@@ -1,6 +1,6 @@
-# Ivy — Official Showcase Website
+# Ivy Bot — Official Showcase Website
 
-Modern, glassmorphic landing page and countdown showcase for **Ivy**, the next-generation Geometry Dash 2.2 Replay Engine & Cloud Macros Framework.
+Modern, minimalist showcase page and countdown for **Ivy Bot**.
 
 Inspired by Astral Bot aesthetics with deep obsidian glass cards, animated glowing borders, particle mesh canvas, and live countdown timer.
 
