@@ -86,7 +86,6 @@ function initCountdown() {
     const hoursEl = document.getElementById('cd-hours');
     const minutesEl = document.getElementById('cd-minutes');
     const secondsEl = document.getElementById('cd-seconds');
-    const statusEl = document.getElementById('countdown-status');
 
     let targetTime = getTargetTime();
 
@@ -112,10 +111,6 @@ function initCountdown() {
         if (hoursEl) hoursEl.textContent = pad(hours);
         if (minutesEl) minutesEl.textContent = pad(minutes);
         if (secondsEl) secondsEl.textContent = pad(seconds);
-
-        if (statusEl) {
-            statusEl.textContent = `Target: Friday 16:00:00 Swedish Time (Europe/Stockholm) • Syncing Live`;
-        }
     }
 
     update();
