@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivy — Next-Gen Geometry Dash 2.2 Framework</title>
+    <meta name="description" content="Next-Generation Geometry Dash 2.2 Replay Engine & Cloud Macros Framework.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Canvas -->
+    <canvas id="ambient-canvas"></canvas>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <div class="logo-box">
+                    <i data-lucide="sparkles" class="logo-icon"></i>
+                </div>
+                <span class="brand-text">Ivy</span>
+                <span class="badge">v1.0.3</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#countdown">Countdown</a>
+                <a href="#team">Team</a>
+                <a href="#credits">Credits</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://github.com/Myszon1212/ivy-macro-backend" target="_blank" class="btn btn-secondary">
+                    <i data-lucide="github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="container hero-container">
+                <div class="status-pill">
+                    <span class="pulse-dot"></span>
+                    <span>Next Release Dropping Soon</span>
+                </div>
+
+                <h1 class="hero-title">
+                    The Ultimate <span class="gradient-text">Geometry Dash</span><br>
+                    Macro & Automation Suite
+                </h1>
+
+                <p class="hero-subtitle">
+                    Ultra-precise input engine with built-in 5 TB Cloud Macros, Moving Wave & UFO Gap Spam, and real-time directional physics prediction.
+                </p>
+
+                <!-- Countdown Section -->
+                <div class="countdown-wrapper" id="countdown">
+                    <div class="countdown-header">
+                        <i data-lucide="timer" class="countdown-icon"></i>
+                        <span>COUNTDOWN TO 18:00 (US TIMEZONE / EST)</span>
+                    </div>
+                    <div class="countdown-grid">
+                        <div class="countdown-card">
+                            <span class="countdown-value" id="cd-days">00</span>
+                            <span class="countdown-label">DAYS</span>
+                        </div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-card">
+                            <span class="countdown-value" id="cd-hours">00</span>
+                            <span class="countdown-label">HOURS</span>
+                        </div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-card">
+                            <span class="countdown-value" id="cd-minutes">00</span>
+                            <span class="countdown-label">MINUTES</span>
+                        </div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-card">
+                            <span class="countdown-value" id="cd-seconds">00</span>
+                            <span class="countdown-label">SECONDS</span>
+                        </div>
+                    </div>
+                    <div class="countdown-footer">
+                        <span id="countdown-status">Target: 18:00:00 America/New_York</span>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="hero-cta">
+                    <a href="#team" class="btn btn-primary btn-large">
+                        <i data-lucide="users"></i>
+                        <span>Meet The Team</span>
+                    </a>
+                    <a href="https://github.com/Myszon1212/ivy-macro-backend" target="_blank" class="btn btn-glass btn-large">
+                        <i data-lucide="download"></i>
+                        <span>Get Ivy .geode</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="section team-section" id="team">
+            <div class="container">
+                <div class="section-badge">
+                    <i data-lucide="code-2"></i>
+                    <span>STAFF & CONTRIBUTORS</span>
+                </div>
+                <h2 class="section-title">The Developers</h2>
+                <p class="section-subtitle">The minds architecting Ivy's engine, hooks, cloud system, and security suite.</p>
+
+                <div class="devs-grid">
+                    <!-- Head Dev -->
+                    <div class="card dev-card head-dev-card">
+                        <div class="card-glow"></div>
+                        <div class="avatar-ring head-ring">
+                            <i data-lucide="crown" class="avatar-icon"></i>
+                        </div>
+                        <div class="dev-role-badge head-badge">Head Developer</div>
+                        <h3 class="dev-name">zmyzca</h3>
+                        <p class="dev-desc">Lead architect & creator of Ivy. Heading overall core design, project direction, and system integrations.</p>
+                    </div>
+
+                    <!-- Developer: myszon -->
+                    <div class="card dev-card">
+                        <div class="card-glow"></div>
+                        <div class="avatar-ring">
+                            <i data-lucide="cpu" class="avatar-icon"></i>
+                        </div>
+                        <div class="dev-role-badge">Core Developer</div>
+                        <h3 class="dev-name">myszon</h3>
+                        <p class="dev-desc">Core developer behind Ivy's backend architecture, cloud macros system, and client-server synchronizations.</p>
+                    </div>
+
+                    <!-- Developer: mimi -->
+                    <div class="card dev-card">
+                        <div class="card-glow"></div>
+                        <div class="avatar-ring">
+                            <i data-lucide="sparkles" class="avatar-icon"></i>
+                        </div>
+                        <div class="dev-role-badge">Developer</div>
+                        <h3 class="dev-name">mimi</h3>
+                        <p class="dev-desc">AI pair engineer & security specialist. Binary hardening, string encryption, and motion physics rendering.</p>
+                    </div>
+                </div>
+
+                <!-- Beta Testers -->
+                <div class="testers-box">
+                    <div class="testers-header">
+                        <i data-lucide="shield-check"></i>
+                        <span>Official Beta Testers</span>
+                    </div>
+                    <div class="testers-grid">
+                        <div class="tester-chip">
+                            <span class="tester-dot"></span>
+                            <span class="tester-name">warcat</span>
+                            <span class="tester-tag">Tester</span>
+                        </div>
+                        <div class="tester-chip">
+                            <span class="tester-dot"></span>
+                            <span class="tester-name">zillion</span>
+                            <span class="tester-tag">Tester</span>
+                        </div>
+                        <div class="tester-chip">
+                            <span class="tester-dot"></span>
+                            <span class="tester-name">mkkrnn</span>
+                            <span class="tester-tag">Tester</span>
+                        </div>
+                        <div class="tester-chip">
+                            <span class="tester-dot"></span>
+                            <span class="tester-name">you</span>
+                            <span class="tester-tag">VIP Tester</span>
+                        </div>
+                        <div class="tester-chip">
+                            <span class="tester-dot"></span>
+                            <span class="tester-name">mimi</span>
+                            <span class="tester-tag">Auto QA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Credits Section -->
+        <section class="section credits-section" id="credits">
+            <div class="container">
+                <div class="credits-card">
+                    <div class="credits-icon-box">
+                        <i data-lucide="award" class="credits-icon"></i>
+                    </div>
+                    <h2 class="credits-title">Inspirations & Special Credits</h2>
+                    <p class="credits-subtitle">
+                        Huge respect and credits to the pioneers and creators of groundbreaking Geometry Dash tools:
+                    </p>
+                    
+                    <div class="credits-tags">
+                        <div class="credit-pill">
+                            <span class="credit-name">Nat</span>
+                            <span class="credit-for">Silicate</span>
+                        </div>
+                        <div class="credit-pill">
+                            <span class="credit-name">chagh</span>
+                            <span class="credit-for">Echo</span>
+                        </div>
+                        <div class="credit-pill">
+                            <span class="credit-name">gwddos</span>
+                            <span class="credit-for">Bot Pioneer</span>
+                        </div>
+                        <div class="credit-pill">
+                            <span class="credit-name">decks</span>
+                            <span class="credit-for">Astral Bot</span>
+                        </div>
+                        <div class="credit-pill">
+                            <span class="credit-name">scarlet</span>
+                            <span class="credit-for">Scarlet Utils</span>
+                        </div>
+                    </div>
+
+                    <p class="credits-note">
+                        Thank you for inspiring the GD modding ecosystem and raising the standard for bot and physics instrumentation.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <div class="brand">
+                    <div class="logo-box">
+                        <i data-lucide="sparkles" class="logo-icon"></i>
+                    </div>
+                    <span class="brand-text">Ivy</span>
+                </div>
+                <p class="footer-copy">© 2026 Ivy Team. Built with passion for Geometry Dash 2.2.</p>
+            </div>
+            <div class="footer-right">
+                <a href="#hero">Back to top</a>
+                <a href="https://github.com/Myszon1212/ivy-macro-backend" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
