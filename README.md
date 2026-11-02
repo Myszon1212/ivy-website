@@ -9,15 +9,12 @@ Inspired by Astral Bot aesthetics with deep obsidian glass cards, animated glowi
 ## 👥 Team & Credits
 
 - **Head Developer**: `zmyzca`
-- **Core Developer**: `myszon`
-- **Developer**: `mimi`
+- **Developer**: `myszon`
 
 ### Official Beta Testers
 - `warcat`
 - `zillion`
 - `mkkrnn`
-- `you`
-- `mimi`
 
 ### Special Credits & Inspirations
 - **Nat** — *Silicate*
