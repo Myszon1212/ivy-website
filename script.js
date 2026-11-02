@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Computes next occurrence of 16:00:00 in Europe/Stockholm (Sweden) time zone.
+ * Computes next occurrence of Friday 16:00:00 in Europe/Stockholm (Sweden) time zone.
  */
 function getTargetTime() {
     const now = new Date();
@@ -23,6 +23,7 @@ function getTargetTime() {
         hour: 'numeric',
         minute: 'numeric',
         second: 'numeric',
+        weekday: 'short',
         hour12: false
     });
 
@@ -38,21 +39,24 @@ function getTargetTime() {
     const sweHour = parseInt(dateMap.hour, 10);
     const sweMinute = parseInt(dateMap.minute, 10);
     const sweSecond = parseInt(dateMap.second, 10);
+    const sweWeekday = dateMap.weekday;
 
-    // Target is 16:00 (4:00 PM) Swedish time
-    let targetDay = sweDay;
-    let targetMonth = sweMonth;
-    let targetYear = sweYear;
+    const weekdayMap = { 'Sun': 0, 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thu': 4, 'Fri': 5, 'Sat': 6 };
+    const currentDayOfWeek = weekdayMap[sweWeekday] !== undefined ? weekdayMap[sweWeekday] : 1;
 
-    if (sweHour > 16 || (sweHour === 16 && (sweMinute > 0 || sweSecond > 0))) {
-        // 16:00 has already passed today in Sweden; target tomorrow 16:00
-        const tomorrow = new Date(Date.UTC(sweYear, sweMonth - 1, sweDay + 1));
-        targetYear = tomorrow.getUTCFullYear();
-        targetMonth = tomorrow.getUTCMonth() + 1;
-        targetDay = tomorrow.getUTCDate();
+    // Calculate days until next Friday (Friday is day 5)
+    let daysUntilFriday = (5 - currentDayOfWeek + 7) % 7;
+    if (daysUntilFriday === 0 && (sweHour > 16 || (sweHour === 16 && (sweMinute > 0 || sweSecond > 0)))) {
+        // Today is Friday and 16:00 has already passed; jump to next week's Friday
+        daysUntilFriday = 7;
     }
 
-    // Format ISO string representing 16:00:00 in Sweden
+    const targetDateObj = new Date(Date.UTC(sweYear, sweMonth - 1, sweDay + daysUntilFriday));
+    const targetYear = targetDateObj.getUTCFullYear();
+    const targetMonth = targetDateObj.getUTCMonth() + 1;
+    const targetDay = targetDateObj.getUTCDate();
+
+    // Format ISO string representing 16:00:00 on Friday in Sweden
     const pad = (n) => String(n).padStart(2, '0');
     const targetISO = `${targetYear}-${pad(targetMonth)}-${pad(targetDay)}T16:00:00`;
 
@@ -110,7 +114,7 @@ function initCountdown() {
         if (secondsEl) secondsEl.textContent = pad(seconds);
 
         if (statusEl) {
-            statusEl.textContent = `Target: 16:00:00 Swedish Time (Europe/Stockholm) • Syncing Live`;
+            statusEl.textContent = `Target: Friday 16:00:00 Swedish Time (Europe/Stockholm) • Syncing Live`;
         }
     }
 
