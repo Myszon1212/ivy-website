@@ -15,6 +15,7 @@ Inspired by Astral Bot aesthetics with deep obsidian glass cards, animated glowi
 - `warcat`
 - `zillion`
 - `mkkrnn`
+- `you`
 
 ### Special Credits & Inspirations
 - **Nat** — *Dev of Silicate*
